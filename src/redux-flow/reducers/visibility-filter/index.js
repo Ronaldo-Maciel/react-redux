@@ -1,6 +1,6 @@
-import { SET_VISIBILITY_FILTER } from "./actions";
+import { SET_VISIBILITY_FILTER, SHOW_ALL } from "./actions";
 
-const initialState = 'SHOW_ALL';
+const initialState = SHOW_ALL;
 
 const reducerVisibilityFilter = (state = initialState, action) => {
   switch(action.type) {

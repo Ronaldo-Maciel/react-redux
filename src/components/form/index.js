@@ -1,20 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTodo } from '../../redux-flow/reducers/todos/actions-creators';
 
-const Form = ({ handleAddTodo }) => (
-  <form onSubmit={handleAddTodo}>
-    <input type="text" name='todo' />
-    <button type="submit">Adicionar</button>
-  </form>
-);
-
-const mapDispatchToProps = (dispatch) => ({
-  handleAddTodo: (e) => {
-    e.preventDefault();
-    dispatch(addTodo(e.target.todo.value));
-    e.target.todo.value = '';
+const Form = () => {
+  const dispatch = useDispatch()
+  const handleAddTodo = e => {
+    e.preventDefault()
+    console.log(e.target.todo.value)
+    dispatch(addTodo(e.target.todo.value))
+    e.target.todo.value = ''
   }
-})
 
-export default connect(null, mapDispatchToProps)(Form);
+  return (
+    <form onSubmit={handleAddTodo}>
+      <input type="text" name='todo' />
+      <button type="submit">Adicionar</button>
+    </form>
+)};
+
+export default Form;

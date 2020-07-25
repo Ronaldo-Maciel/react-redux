@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './index.module.scss';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { toggleTodo } from '../../redux-flow/reducers/todos/actions-creators';
 import * as filterActions from '../../redux-flow/reducers/visibility-filter/actions';
 
@@ -13,7 +13,10 @@ const getVisibleTodos = (todos, activeFilter) => {
   return actions[activeFilter];
 }
 
-const TodosList = ({ todos, handleToggleTodo, activeFilter }) => {
+const TodosList = () => {
+  const todos = useSelector(state => state.todos)
+  const activeFilter = useSelector(state => state.visibilityFilter)
+  const dispatch = useDispatch()
 
   return (
     <ul>
@@ -21,7 +24,7 @@ const TodosList = ({ todos, handleToggleTodo, activeFilter }) => {
         <li 
           key={item.id}
           className={item.completed ? styles['completed'] : ''}
-          onClick={handleToggleTodo(item.id)}
+          onClick={() => dispatch(toggleTodo(item.id))}
         >
           {item.text}
         </li>
@@ -29,17 +32,5 @@ const TodosList = ({ todos, handleToggleTodo, activeFilter }) => {
     </ul>
   )
 }
-;
 
-const mapStateToProps = state => ({
-  todos: state.todos,
-  activeFilter: state.visibilityFilter
-});
-
-const mapDispatchToProps = dispatch =>({
-  handleToggleTodo: id => e => {
-    dispatch(toggleTodo(id))
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodosList);
+export default TodosList;

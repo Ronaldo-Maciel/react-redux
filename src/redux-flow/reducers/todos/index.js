@@ -1,15 +1,7 @@
 import { ADD_TODO, TOGGLE_TODO } from "./actions"
+import createReducer from "../createReducer";
 
 const initialState = [];
-
-const createReducer = (initialState, handleActions) => {
-  return (state = initialState, action) => {
-    if (handleActions.hasOwnProperty(action.type)) {
-      return handleActions[action.type](state, action)
-    }
-    return state;
-  }
-}
 
 const todos = createReducer(initialState, {
   [ADD_TODO]: (state, action) => state.concat({

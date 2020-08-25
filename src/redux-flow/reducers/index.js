@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
-import reducerTodos from './todos/';
-import reducerVisibilityFilter from './visibility-filter/';
+import todos from './todos/';
+import visibilityFilter from './visibility-filter/';
+import address from "./address";
 
-const reducer = combineReducers({
-  todos: reducerTodos,
-  visibilityFilter: reducerVisibilityFilter
+const rootReducer = combineReducers({
+  todos,
+  visibilityFilter,
+  address,
 })
 
-export default reducer;
+export default rootReducer;

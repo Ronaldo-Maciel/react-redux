@@ -1,11 +1,11 @@
 import address from './index'
-import { UPDATE_ADDRESS } from './actions'
+import { SUCCESS } from './actions'
 
 it('address should be a function', () => {
   expect(typeof address).toBe('function')
 })
 
-it('should action UPDATE_ADDRESS update address ', () => {
+it('should action SUCCESS update address ', () => {
   const before = {
     cep: '',
     logradouro: '',
@@ -14,7 +14,7 @@ it('should action UPDATE_ADDRESS update address ', () => {
     uf: ''
   }
   const action = {
-    type: UPDATE_ADDRESS,
+    type: SUCCESS,
     payload: {
       cep: '03908111',
       logradouro: 'rua foo',

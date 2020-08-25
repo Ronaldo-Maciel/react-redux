@@ -1,16 +1,29 @@
 import createReducer from "../createReducer"
-import { UPDATE_ADDRESS } from './actions'
+import { FETCHING, SUCCESS, ERROR } from './actions'
 
 const initialState = {
   cep: '',
   logradouro: '',
   bairro: '',
   localidade: '',
-  uf: ''
+  uf: '',
+  isFetching: false,
+  error: ''
 };
 
 const address = createReducer(initialState, {
-  [UPDATE_ADDRESS]: (state, action) => action.payload
+  [FETCHING]: (state, action) => ({
+    ...state,
+    isFetching: true
+  }),
+  [SUCCESS]: (state, action) => ({
+    ...action.payload,
+    isFetching: false
+  }),
+  [ERROR]: (state, action) => ({
+    ...action.payload,
+    isFetching: false
+  })
 })
 
 export default address

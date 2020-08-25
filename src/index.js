@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from "./redux-flow/reducers";
+import configureStore from './redux-flow/configure-store';
 
-const store = createStore(reducer);
+const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>

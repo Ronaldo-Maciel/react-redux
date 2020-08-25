@@ -1,1 +1,3 @@
-export const UPDATE_ADDRESS = 'address:UPDATE_ADDRESSS'
+export const SUCCESS = 'address:SUCCESS'
+export const ERROR = 'address:ERROR'
+export const FETCHING = 'address:FETCHING'
